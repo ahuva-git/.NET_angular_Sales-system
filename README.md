@@ -12,26 +12,6 @@ This is a fullstack application with a **C# .NET 8** backend and an **Angular** 
 
 ---
 
-## 🚀 How to Run the Project
-
-### 1. Prerequisites
-Make sure you have the following installed:
-* [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
-* [Node.js](https://nodejs.org/)
-* [Angular CLI](https://angular.io/cli)
-
----
-
-### 2. Setting up the Backend (Server)
-1. Open a terminal (cmd) in the `WEBAPI` folder.
-2. Run the following command to start the server:
-   ```bash
-   dotnet run# Fullstack Project: .NET 8 WebAPI & Angular
-
-This is a fullstack application with a **C# .NET 8** backend and an **Angular** frontend.
-
----
-
 ## 📂 Project Structure
 
 - **`/WEBAPI`**: The Server-side (ASP.NET Core 8 Web API).
