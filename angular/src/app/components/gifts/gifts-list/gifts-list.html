@@ -1,0 +1,126 @@
+<div class="page-header">
+  <h3>Gifts List</h3>
+  @if(isManager()){
+    <div class="action-buttons">
+      <button class="btn-primary" (click)="id = 0">➕ Add Gift</button>
+      <button class="btn-outline" (click)="showTotalIncome()">💰 Show Total Income</button>
+      <button class="btn-outline" (click)="downloadPdf()">📄 Generate Winners Report</button>
+    </div>
+  }
+</div>
+
+@if(errorMsg){
+<div class="alert alert-danger" style="display: flex; justify-content: space-between; align-items: center;">
+  <span>{{errorMsg}}</span>
+  <button class="btn-close" (click)="errorMsg = ''" style="background: none; border: none; cursor: pointer; font-size: 20px; color: #721c24;">✕</button>
+</div>
+}
+
+<div class="filter-section">
+  <h4>Filter & Sort Gifts</h4>
+  <div class="filter-inputs">
+    <input 
+      type="text" 
+      [(ngModel)]="filter.giftName" 
+      placeholder="Filter by Gift Name"
+      (input)="applyFilters()"
+    />
+    <input 
+      type="text" 
+      [(ngModel)]="filter.donorName" 
+      placeholder="Filter by Donor Name"
+      (input)="applyFilters()"
+    />
+    <input 
+      type="text" 
+      [(ngModel)]="filter.category" 
+      placeholder="Filter by Category"
+      (input)="applyFilters()"
+    />
+    
+    <select [(ngModel)]="filter.sortBy" (change)="applyFilters()">
+      <option [ngValue]="undefined">No Sorting</option>
+      <option [ngValue]="GiftSortBy.Price">Sort by Price</option>
+      <option [ngValue]="GiftSortBy.PurchasesCount">Sort by Purchases Count</option>
+    </select>
+    
+    <label>
+      <input 
+        type="checkbox" 
+        [(ngModel)]="filter.desc" 
+        (change)="applyFilters()"
+        [disabled]="!filter.sortBy"
+      />
+      Descending
+    </label>
+    
+    <button (click)="clearFilters()">Clear Filters</button>
+  </div>
+</div>
+
+<table class="table-bordered">
+  <thead>
+    <tr>
+      <th>Gift ID</th>
+      <th>Image</th>
+      <th>Gift Name</th>
+      <th>Donor Name</th>
+      <th>Card Price</th>
+      <th>Category</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for(g of gifts$ | async; track g.id){
+      <tr>
+        <td>{{g.id}}</td>
+        <td>
+          @if (g.imageUrl) {
+            <img [src]="g.imageUrl" [alt]="g.name" class="gift-thumbnail" />
+          } @else {
+            <span class="no-image">🎁</span>
+          }
+        </td>
+        <td>{{g.name}}</td>
+        <td>{{g.donorName}}</td>
+        <td>{{g.cardPrice}}</td>
+        <td>{{g.category}}</td>
+        <td>
+          <div class="actions-container">
+            <!-- Manager actions -->
+            @if (isManager()) {
+              <div class="action-buttons-row">
+                <button (click)="removeGift(g.id)">❌</button>
+                <button (click)="updateGift(g.id)">✏️</button>
+                @if (!getWinnerName(g.id) && !g.isRaffled) {
+                  <button (click)="raffleGift(g.id)">🎲 Make a lottery</button>
+                }
+                <button (click)="viewPurchasers(g)" title="View Purchasers">👥 View Purchasers</button>
+              </div>
+              @if (getWinnerName(g.id)) {
+                <div class="winner-label">🏆 Winner: {{ getWinnerName(g.id) }}</div>
+              } @else if (g.isRaffled) {
+                <div class="raffled-label">🎉 Raffled</div>
+              }
+              <!--Regular user actions-->
+            } @else { 
+              @if (g.isRaffled) {
+                @if (getWinnerName(g.id)) {
+                  <div class="winner-label">🏆 Winner: {{ getWinnerName(g.id) }}</div>
+                } @else {
+                  <div class="raffled-label">🎉 Raffled</div>
+                }
+              } @else {
+                <button (click)="addToCart(g.id)">Add to Cart</button>
+              }
+            }
+          </div>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
+<!--פתיחת טופס עדכון מתנה-->
+@if(id >= 0){
+<app-gift [(selectedId)]="id" (selectedIdChange)="onGiftSaved($event)"></app-gift>
+}

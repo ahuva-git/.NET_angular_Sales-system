@@ -1,0 +1,104 @@
+// ==================================================
+// COLOR VARIABLES - Three-Color Palette Design
+// ==================================================
+$primary-teal: #42bbbb;
+$primary-coral: #bb4242;
+$white: #ffffff;
+$text-dark: #2c3e50;
+
+// ==================================================
+// LOGIN CONTAINER
+// ==================================================
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f5f7fa;  // Light gray background for card contrast
+  padding: 2rem;
+}
+
+.login-form {
+  max-width: 450px;
+  width: 100%;
+  padding: 3rem;
+  background-color: $white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba($text-dark, 0.08);
+  
+  h2 {
+    color: $text-dark;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+    
+    input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 2px solid lighten($text-dark, 60%);
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: all 0.25s ease;
+      
+      &:focus {
+        outline: none;
+        border-color: $primary-teal;
+        box-shadow: 0 0 0 3px rgba($primary-teal, 0.1);
+      }
+    }
+  }
+  
+  button {
+    width: 100%;
+    padding: 0.875rem;
+    background-color: $primary-teal;
+    color: $white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 8px rgba($primary-teal, 0.25);
+    margin-bottom: 1rem;
+    
+    &:hover {
+      background-color: darken($primary-teal, 12%);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba($primary-teal, 0.35);
+    }
+  }
+  
+  .register-link {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: $text-dark;
+    
+    a {
+      color: $primary-teal;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.25s ease;
+      
+      &:hover {
+        color: darken($primary-teal, 12%);
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.error-message {
+  background-color: lighten($primary-coral, 42%);
+  color: darken($primary-coral, 20%);
+  padding: 1rem;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid $primary-coral;
+}

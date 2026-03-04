@@ -1,0 +1,373 @@
+// ==================================================
+// THREE-COLOR PALETTE DESIGN SYSTEM
+// ==================================================
+// Primary Colors
+$white: #ffffff;              // Main background - clean, spacious
+$primary-teal: #42bbbb;       // Dominant action color - interactive elements
+$primary-coral: #bb4242;      // Subtle secondary accents
+
+// Derived colors for text and shadows
+$text-dark: #2c3e50;          // Main text color
+$text-light: #6c757d;         // Secondary text
+$shadow-subtle: rgba(44, 62, 80, 0.08);
+$shadow-medium: rgba(44, 62, 80, 0.12);
+$shadow-strong: rgba(44, 62, 80, 0.16);
+
+// Teal variants for hover states
+$teal-dark: darken($primary-teal, 12%);
+$teal-light: lighten($primary-teal, 45%);
+$teal-hover-bg: rgba($primary-teal, 0.08);
+
+// Coral variants for accent states
+$coral-dark: darken($primary-coral, 12%);
+$coral-light: lighten($primary-coral, 45%);
+
+// Bootstrap color overrides
+$primary: $primary-teal;
+$secondary: $primary-coral;
+$danger: $primary-coral;
+$body-bg: $white;
+$body-color: $text-dark;
+
+// Import Bootstrap Icons
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
+// ==================================================
+// GLOBAL RESET & BASE STYLES
+// ==================================================
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $white;
+  color: $text-dark;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  line-height: 1.6;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// ==================================================
+// TYPOGRAPHY SYSTEM
+// ==================================================
+h1, h2, h3, h4, h5, h6 {
+  color: $text-dark;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+}
+
+h1 { font-size: 2.5rem; margin-bottom: 1.5rem; }
+h2 { 
+  font-size: 2rem; 
+  color: $primary-teal;
+  margin-bottom: 1.25rem;
+}
+h3 { 
+  font-size: 1.75rem;
+  margin-bottom: 1.25rem;
+}
+h4 { 
+  font-size: 1.5rem;
+  color: $text-dark;
+}
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1rem; }
+
+p {
+  margin-bottom: 1rem;
+  color: $text-dark;
+}
+
+a {
+  color: $primary-teal;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  
+  &:hover {
+    color: $teal-dark;
+    text-decoration: underline;
+  }
+}
+
+// ==================================================
+// BUTTON SYSTEM - Teal Primary, Coral Secondary
+// ==================================================
+button, .btn {
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.75rem 1.75rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  outline: none;
+  
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+  }
+}
+
+// Primary button - Teal (dominant action color)
+.btn-primary, button:not(.btn-secondary):not(.btn-outline):not(.btn-text) {
+  background-color: $primary-teal;
+  color: $white;
+  box-shadow: 0 2px 8px rgba($primary-teal, 0.25);
+  
+  &:hover:not(:disabled) {
+    background-color: $teal-dark;
+    box-shadow: 0 4px 12px rgba($primary-teal, 0.35);
+    transform: translateY(-1px);
+  }
+  
+  &:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: 0 1px 4px rgba($primary-teal, 0.25);
+  }
+}
+
+// Secondary button - Coral (subtle accent)
+.btn-secondary {
+  background-color: $primary-coral;
+  color: $white;
+  box-shadow: 0 2px 8px rgba($primary-coral, 0.25);
+  
+  &:hover:not(:disabled) {
+    background-color: $coral-dark;
+    box-shadow: 0 4px 12px rgba($primary-coral, 0.35);
+    transform: translateY(-1px);
+  }
+  
+  &:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: 0 1px 4px rgba($primary-coral, 0.25);
+  }
+}
+
+// Outline button - Teal outline
+.btn-outline {
+  background-color: $white;
+  color: $primary-teal;
+  border: 2px solid $primary-teal;
+  box-shadow: none;
+  
+  &:hover:not(:disabled) {
+    background-color: $primary-teal;
+    color: $white;
+    transform: translateY(-1px);
+  }
+}
+
+// Text button - minimal
+.btn-text {
+  background: transparent;
+  color: $primary-teal;
+  padding: 0.5rem 1rem;
+  box-shadow: none;
+  
+  &:hover:not(:disabled) {
+    background-color: $teal-hover-bg;
+    transform: none;
+  }
+}
+
+// ==================================================
+// FORM ELEMENTS
+// ==================================================
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+textarea,
+select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-family: inherit;
+  font-size: 1rem;
+  color: $text-dark;
+  background-color: $white;
+  border: 2px solid lighten($text-dark, 60%);
+  border-radius: 6px;
+  transition: all 0.25s ease;
+  outline: none;
+  
+  &:focus {
+    border-color: $primary-teal;
+    box-shadow: 0 0 0 3px rgba($primary-teal, 0.1);
+  }
+  
+  &::placeholder {
+    color: $text-light;
+  }
+}
+
+// Checkbox and Radio - Teal accent
+input[type="checkbox"],
+input[type="radio"] {
+  width: 1.25rem;
+  height: 1.25rem;
+  accent-color: $primary-teal;
+  cursor: pointer;
+}
+
+// Select dropdown
+select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23#{str-slice(#{$text-dark}, 2)}' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  padding-right: 2.5rem;
+}
+
+label {
+  color: $text-dark;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+// ==================================================
+// CARD SYSTEM - Clean with subtle shadows
+// ==================================================
+.card {
+  background-color: $white;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px $shadow-subtle;
+  margin-bottom: 2rem;
+  border: 1px solid rgba($text-dark, 0.08);
+  
+  &:hover {
+    box-shadow: 0 4px 16px $shadow-medium;
+  }
+}
+
+// ==================================================
+// ALERT SYSTEM
+// ==================================================
+.alert {
+  padding: 1rem 1.5rem;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid;
+  
+  &-danger, &-error {
+    background-color: lighten($primary-coral, 42%);
+    color: darken($primary-coral, 20%);
+    border-left-color: $primary-coral;
+  }
+  
+  &-success {
+    background-color: $teal-light;
+    color: darken($primary-teal, 25%);
+    border-left-color: $primary-teal;
+  }
+  
+  &-warning {
+    background-color: lighten($primary-coral, 45%);
+    color: darken($primary-coral, 15%);
+    border-left-color: $primary-coral;
+  }
+  
+  &-info {
+    background-color: $teal-light;
+    color: darken($primary-teal, 20%);
+    border-left-color: $primary-teal;
+  }
+}
+
+// ==================================================
+// TABLE SYSTEM - Clean and spacious
+// ==================================================
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: $white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px $shadow-subtle;
+  
+  thead {
+    background-color: $primary-teal;
+    color: $white;
+    
+    th {
+      padding: 1.25rem;
+      font-weight: 600;
+      text-align: left;
+      letter-spacing: 0.5px;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+    }
+  }
+  
+  tbody {
+    tr {
+      border-bottom: 1px solid rgba($text-dark, 0.08);
+      transition: background-color 0.2s ease;
+      
+      &:hover {
+        background-color: $teal-hover-bg;
+      }
+      
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+    
+    td {
+      padding: 1.25rem;
+      color: $text-dark;
+    }
+  }
+}
+
+// ==================================================
+// UTILITY CLASSES
+// ==================================================
+.text-teal { color: $primary-teal; }
+.text-coral { color: $primary-coral; }
+.text-muted { color: $text-light; }
+
+.bg-teal { background-color: $primary-teal; }
+.bg-coral { background-color: $primary-coral; }
+.bg-white { background-color: $white; }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.spacer-sm { margin-bottom: 1rem; }
+.spacer-md { margin-bottom: 2rem; }
+.spacer-lg { margin-bottom: 3rem; }
+
+// ==================================================
+// RESPONSIVE UTILITIES
+// ==================================================
+// @media (max-width: 768px) {
+//   h1 { font-size: 2rem; }
+//   h2 { font-size: 1.75rem; }
+//   h3 { font-size: 1.5rem; }
+  
+//   .container {
+//     padding: 1rem;
+//   }
+  
+//   .card {
+//     padding: 1.5rem;
+//   }
+// }

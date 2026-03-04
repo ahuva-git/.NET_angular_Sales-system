@@ -1,0 +1,23 @@
+<nav class="navbar-design-3">
+  <div class="nav-links">
+    <a routerLink="/gifts"><i class="bi bi-gift"></i>Gifts</a>
+    
+    @if (isLoggedIn()) {
+      @if (isManager()) {
+        <a routerLink="/donors"><i class="bi bi-person"></i>Donors</a>
+        <a routerLink="/users"><i class="bi bi-people"></i>Users</a>
+      }
+      <a routerLink="/shoppings"><i class="bi bi-bag"></i>Shoppings</a>
+      <a routerLink="/profile"><i class="bi bi-person-circle"></i>Profile</a>
+    } @else {
+      <a routerLink="/login"><i class="bi bi-box-arrow-in-right"></i>Login</a>
+      <a routerLink="/register"><i class="bi bi-pencil-square"></i>Register</a>
+    }
+  </div>
+
+  @if (isLoggedIn()) {
+    <button (click)="logout()"><i class="bi bi-box-arrow-right"></i>Logout</button>
+  }
+</nav>
+
+<router-outlet />

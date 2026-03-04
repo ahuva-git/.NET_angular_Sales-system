@@ -1,0 +1,125 @@
+// ==================================================
+// COLOR VARIABLES - Three-Color Palette Design
+// ==================================================
+$primary-teal: #42bbbb;
+$primary-coral: #bb4242;
+$white: #ffffff;
+$text-dark: #2c3e50;
+
+// ==================================================
+// COMPONENT STYLES
+// ==================================================
+:host {
+  display: block;
+  padding: 3rem;
+  background-color: #f5f7fa;  // Light gray background for card contrast
+  min-height: 100vh;
+}
+
+h3 {
+  color: $text-dark;
+  margin-bottom: 2.5rem;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+// ==================================================
+// TABLE DESIGN - Card-Based Rows
+// ==================================================
+.table-bordered {
+  width: 100%;
+  background-color: transparent;
+  border-collapse: separate;
+  border-spacing: 0 1rem;  // Vertical spacing between card rows
+  margin-bottom: 2rem;
+}
+
+.table-bordered th,
+.table-bordered td {
+  border: none;
+  text-align: center;
+}
+
+.table-bordered th {
+  background-color: $primary-teal;
+  color: $white;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  padding: 1.5rem 2rem;
+  border-right: 3px solid rgba($white, 0.35);
+    
+  &:first-child {
+    border-top-left-radius: 12px;
+  }
+  &:last-child {
+    border-top-right-radius: 12px;
+  }
+}
+
+.table-bordered tbody tr {
+  background-color: $white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border-left: 4px solid transparent;
+  
+  &:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    border-left-color: $primary-teal;
+    transform: translateY(-2px);
+  }
+}
+
+.table-bordered td {
+  padding: 1.5rem 2rem;
+  color: $text-dark;
+  vertical-align: middle;
+  background-color: $white;
+  
+  &:first-child {
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border-left: 4px solid #d27171;
+
+  }
+  
+  &:last-child {
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+  }
+}
+
+// ==================================================
+// ALERTS
+// ==================================================
+.alert-danger {
+  color: darken($primary-coral, 20%);
+  background-color: lighten($primary-coral, 42%);
+  border: 1px solid $primary-coral;
+  border-left: 4px solid $primary-coral;
+  padding: 1rem 1.5rem;
+  border-radius: 6px;
+  margin: 1.5rem 0;
+  font-weight: 500;
+}
+
+// ==================================================
+// RESPONSIVE
+// ==================================================
+@media (max-width: 768px) {
+  :host {
+    padding: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.65rem;
+  }
+
+  .table-bordered th,
+  .table-bordered td {
+    padding: 0.875rem;
+    font-size: 0.9rem;
+  }
+}

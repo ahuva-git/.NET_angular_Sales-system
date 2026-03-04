@@ -1,0 +1,70 @@
+<div class="register-form">
+  <h2>Register</h2>
+
+  <!-- שם משתמש -->
+  <div class="form-group">
+    <input [(ngModel)]="user.userName" placeholder="Username" />
+    @if (errors['userName']?.length) {
+      <div>
+        @for (err of errors['userName']; track err) {
+          <small class="text-danger">{{ err }}</small>
+        }
+      </div>
+    }
+  </div>
+
+  <!-- אימייל -->
+  <div class="form-group">
+    <input [(ngModel)]="user.email" placeholder="Email" />
+    @if (errors['email']?.length) {
+      <div>
+        @for (err of errors['email']; track err) {
+          <small class="text-danger">{{ err }}</small>
+        }
+      </div>
+    }
+  </div>
+
+  <!-- טלפון -->
+  <div class="form-group">
+    <input [(ngModel)]="user.phone" placeholder="Phone" />
+    @if (errors['phone']?.length) {
+      <div>
+        @for (err of errors['phone']; track err) {
+          <small class="text-danger">{{ err }}</small>
+        }
+      </div>
+    }
+  </div>
+
+  <!-- סיסמא -->
+  <div class="form-group">
+    <input [(ngModel)]="user.password" type="password" placeholder="Password" />
+    @if (errors['password']?.length) {
+      <div>
+        @for (err of errors['password']; track err) {
+          <small class="text-danger">{{ err }}</small>
+        }
+      </div>
+    }
+  </div>
+
+  <button (click)="register()">Register</button>
+
+  <!-- הודעת הצלחה -->
+  @if (successMessage) {
+    <div class="success-message">{{ successMessage }}</div>
+  }
+
+  <!-- שגיאות כלליות -->
+  @if (errors['general']?.length) {
+    <div class="error-message">
+      @for (err of errors['general']; track err) {
+        <div>{{ err }}</div>
+      }
+    </div>
+  }
+
+  <p class="login-link">Already registered? <a routerLink="/login">Login here</a></p>
+</div>
+

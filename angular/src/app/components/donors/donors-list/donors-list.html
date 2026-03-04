@@ -1,0 +1,88 @@
+@if(isManager()){
+
+  <div class="page-header">
+    <h3>Donors List</h3>
+    <div class="action-buttons">
+      <button class="btn-primary" (click)="openAddDonor()">➕ Add Donor</button>
+    </div>
+  </div>
+
+  <div class="filter-section">
+    <h4>Filter Donors</h4>
+    <div class="filter-inputs">
+      <input 
+        type="text" 
+        [(ngModel)]="filter.name" 
+        placeholder="Filter by Name"
+        (input)="applyFilters()"
+      />
+      <input 
+        type="text" 
+        [(ngModel)]="filter.email" 
+        placeholder="Filter by Email"
+        (input)="applyFilters()"
+      />
+      <input 
+        type="text" 
+        [(ngModel)]="filter.giftName" 
+        placeholder="Filter by Gift Name"
+        (input)="applyFilters()"
+      />
+      <button (click)="clearFilters()">Clear Filters</button>
+    </div>
+  </div>
+
+  <table class="table-bordered">
+    <thead>
+      <tr>
+        <th>Donor ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Gifts</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(d of donors$ | async; track d.id){
+        <tr>
+          <td>{{d.id}}</td>
+          <td>{{d.name}}</td>
+          <td>{{d.email}}</td>
+          <td>{{d.phone}}</td>
+          <td>
+            @if(d.gifts && d.gifts.length > 0){
+              <div class="gifts-list">
+                @for(gift of d.gifts; track gift.id){
+                  <span class="gift-badge">{{gift.name}}</span>
+                }
+              </div>
+            } @else {
+              <span class="no-gifts">No gifts</span>
+            }
+          </td>
+          <td>
+            <div class="action-buttons-row">
+              <button (click)="removeDonor(d.id)">❌</button>
+              <button (click)="updateDonor(d.id)">✏️</button>
+            </div>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+
+  @if(errorMsg){
+    <div class="error-message" style="display: flex; justify-content: space-between; align-items: center;">
+      <span>⚠️ {{errorMsg}}</span>
+      <button class="btn-close" (click)="errorMsg = ''" style="background: none; border: none; cursor: pointer; font-size: 20px; color: white;">✕</button>
+    </div>
+  }
+
+  @if(id >= 0){
+  <app-donor [(selectedId)]="id" (selectedIdChange)="onDonorSaved($event)"></app-donor>
+  }
+}
+<!-- @else {
+<div class="alert alert-warning">Not authorized - Only managers can view donors</div>
+} -->

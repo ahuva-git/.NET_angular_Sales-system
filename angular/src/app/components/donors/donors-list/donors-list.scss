@@ -1,0 +1,398 @@
+// ==================================================
+// COLOR VARIABLES - Three-Color Palette Design
+// ==================================================
+$primary-teal: #42bbbb;       // Dominant action color
+$primary-coral: #bb4242;      // Subtle secondary accent
+$white: #ffffff;              // Main background
+$text-dark: #2c3e50;          // Main text
+$text-light: #6c757d;         // Secondary text
+
+// Derived colors
+$teal-hover: rgba($primary-teal, 0.08);
+$coral-light: lighten($primary-coral, 42%);
+
+// ==================================================
+// COMPONENT CONTAINER
+// ==================================================
+:host {
+  display: block;
+  padding: 3rem;
+  background-color: #f5f7fa;  // Light gray background for card contrast
+  min-height: 100vh;
+}
+
+// ==================================================
+// PAGE HEADER - Professional Layout
+// ==================================================
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.5rem;
+  gap: 2rem;
+  flex-wrap: wrap;
+  
+  h3 {
+    margin: 0;
+    color: $text-dark;
+    font-weight: 600;
+    font-size: 2rem;
+    letter-spacing: -0.5px;
+  }
+  
+  .action-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+}
+
+// ==================================================
+// ACTION BUTTONS - Modern Professional Design
+// ==================================================
+.btn-primary {
+  background-color: $primary-teal;
+  color: $white;
+  border: none;
+  padding: 0.875rem 1.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 8px rgba($primary-teal, 0.25);
+  white-space: nowrap;
+  
+  &:hover {
+    background-color: darken($primary-teal, 12%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba($primary-teal, 0.35);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// ==================================================
+// TYPOGRAPHY
+// ==================================================
+h3 {
+  color: $text-dark;
+  font-weight: 600;
+  font-size: 2rem;
+  margin-bottom: 2.5rem;
+  letter-spacing: -0.5px;
+}
+
+// ==================================================
+// FILTER SECTION
+// ==================================================
+.filter-section {
+  background-color: $white;
+  padding: 2rem;
+  margin-bottom: 3rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba($text-dark, 0.06);
+  border: 1px solid rgba($text-dark, 0.06);
+}
+
+h4 {
+  color: $primary-teal;
+  font-weight: 600;
+  font-size: 1.35rem;
+  margin-bottom: 1.25rem;
+}
+
+.filter-inputs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-end;
+
+  input[type="text"] {
+    min-width: 180px;
+    max-width: 250px;
+    background-color: $white;
+    color: $text-dark;
+    border: 2px solid $primary-teal;
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    transition: all 0.25s ease;
+    outline: none;
+
+    &:focus {
+      border-color: $primary-teal;
+      box-shadow: 0 0 0 3px rgba($primary-teal, 0.1);
+    }
+
+    &::placeholder {
+      color: lighten($text-dark, 40%);
+    }
+  }
+
+  button {
+    background-color: $white;
+    border: 2px solid $primary-teal;
+    color: $primary-teal;
+    padding: 0.75rem 1.75rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.25s ease;
+    white-space: nowrap;
+
+    &:hover {
+      background-color: $primary-teal;
+      color: $white;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba($primary-teal, 0.25);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+// ==================================================
+// TABLE DESIGN - Card-Based Rows
+// ==================================================
+.table-bordered {
+  width: 100%;
+  background-color: transparent;
+  border-collapse: separate;
+  border-spacing: 0 1rem;  // Vertical spacing between card rows
+  margin-bottom: 2rem;
+
+  thead {
+    background-color: $primary-teal;
+    color: $white;
+
+    tr {
+      border: none;
+      
+      th {
+        padding: 1.5rem 2rem;
+        text-align: center;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        border: none;
+        font-size: 0.95rem;
+        text-transform: uppercase;
+        background-color: $primary-teal;
+        border-right: 3px solid rgba($white, 0.35);
+        
+        // Rounded top corners for header
+        &:first-child {
+          border-top-left-radius: 12px;
+        }
+        
+        &:last-child {
+          border-top-right-radius: 12px;
+          border-right: none;
+        }
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      background-color: $white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      border-left: 4px solid transparent;
+      
+      &:hover {
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+        border-left-color: $primary-teal;
+        transform: translateY(-2px);
+      }
+
+      td {
+        padding: 1.5rem 2rem;
+        color: $text-dark;
+        vertical-align: middle;
+        text-align: center;
+        font-size: 0.95rem;
+        border: none;
+        background-color: $white;
+        
+        // Rounded corners for first and last cell in row
+        &:first-child {
+          border-top-left-radius: 12px;
+          border-bottom-left-radius: 12px;
+          border-left: 4px solid #d27171;
+
+        }
+        
+        &:last-child {
+          border-top-right-radius: 12px;
+          border-bottom-right-radius: 12px;
+        }
+        
+        // Action buttons in horizontal row
+        .action-buttons-row {
+          display: flex;
+          gap: 0.5rem;
+          flex-wrap: nowrap;
+          align-items: center;
+          justify-content: center;
+        }
+
+        button {
+          background-color: $primary-teal;
+          color: $white;
+          border: none;
+          padding: 0.6rem 1rem;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          font-size: 0.9rem;
+          font-weight: 600;
+          white-space: nowrap;
+
+          &:hover {
+            background-color: darken($primary-teal, 12%);
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba($primary-teal, 0.25);
+          }
+
+          &:active {
+            transform: translateY(0);
+          }
+        }
+      }
+    }
+  }
+}
+
+// ==================================================
+// LISTS & BADGES
+// ==================================================
+.error-message {
+  background-color: $coral-light;
+  color: darken($primary-coral, 20%);
+  border: 1px solid $primary-coral;
+  border-left: 4px solid $primary-coral;
+  padding: 1rem 1.5rem;
+  border-radius: 6px;
+  margin: 1.5rem 0;
+  font-weight: 500;
+}
+
+.text-danger {
+  color: $primary-coral;
+  font-size: 0.9rem;
+  margin-top: 0.35rem;
+}
+
+.gifts-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.gift-badge {
+  background-color: $primary-teal;
+  color: $white;
+  padding: 0.35rem 0.85rem;
+  border-radius: 5px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: inline-block;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background-color: darken($primary-teal, 10%);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba($primary-teal, 0.25);
+  }
+}
+
+.no-gifts {
+  color: $text-light;
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+// ==================================================
+// ALERTS
+// ==================================================
+.alert {
+  padding: 1rem 1.5rem;
+  border-radius: 6px;
+  margin: 1.5rem 0;
+  border-left: 4px solid;
+  
+  &-warning {
+    background-color: lighten($primary-coral, 45%);
+    color: darken($primary-coral, 15%);
+    border-left-color: $primary-coral;
+    font-weight: 500;
+  }
+}
+
+// ==================================================
+// RESPONSIVE DESIGN
+// ==================================================
+@media (max-width: 768px) {
+  :host {
+    padding: 1.5rem;
+  }
+  
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+    
+    .action-buttons {
+      width: 100%;
+      
+      button {
+        width: 100%;
+      }
+    }
+  }
+
+  h3 {
+    font-size: 1.65rem;
+  }
+
+  .filter-section {
+    padding: 1.5rem;
+  }
+
+  .filter-inputs {
+    flex-direction: column;
+
+    input[type="text"],
+    button {
+      width: 100%;
+      min-width: unset;
+      max-width: none;
+    }
+  }
+
+  .table-bordered {
+    font-size: 0.875rem;
+
+    thead th,
+    tbody td {
+      padding: 0.875rem;
+    }
+
+    thead th {
+      font-size: 0.8rem;
+    }
+
+    tbody td button {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.8rem;
+    }
+  }
+}

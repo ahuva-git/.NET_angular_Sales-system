@@ -1,0 +1,211 @@
+// ==================================================
+// COLOR VARIABLES - Three-Color Palette Design
+// ==================================================
+$primary-teal: #42bbbb;
+$primary-coral: #bb4242;
+$white: #ffffff;
+$text-dark: #2c3e50;
+$text-light: #6c757d;
+
+// ==================================================
+// PURCHASERS CONTAINER
+// ==================================================
+.purchasers-container {
+  padding: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #f5f7fa;  // Light gray background for card contrast
+  min-height: 100vh;
+
+  h3 {
+    text-align: center;
+    color: $text-dark;
+    margin-bottom: 2.5rem;
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+  // ==================================================
+  // LOADING & EMPTY STATES
+  // ==================================================
+  .loading {
+    text-align: center;
+    padding: 3rem;
+    font-size: 1.25rem;
+    color: $text-light;
+  }
+
+  .no-data {
+    text-align: center;
+    padding: 3rem;
+    font-size: 1.1rem;
+    color: lighten($text-dark, 30%);
+    background: rgba($text-dark, 0.02);
+    border-radius: 8px;
+    border: 2px dashed rgba($text-dark, 0.15);
+  }
+
+  // ==================================================
+  // SUMMARY CARD
+  // ==================================================
+  .summary {
+    background: rgba($primary-teal, 0.08);
+    padding: 1.5rem 2rem;
+    border-radius: 8px;
+    margin-bottom: 2.5rem;
+    border-left: 4px solid $primary-teal;
+    box-shadow: 0 2px 8px rgba($text-dark, 0.06);
+
+    p {
+      margin: 0.75rem 0;
+      font-size: 1.05rem;
+      color: $text-dark;
+
+      strong {
+        color: $primary-teal;
+        font-weight: 600;
+      }
+    }
+  }
+
+  // ==================================================
+  // TABLE DESIGN - Card-Based Rows
+  // ==================================================
+  .table-bordered {
+    width: 100%;
+    background-color: transparent;
+    border-collapse: separate;
+    border-spacing: 0 1rem;  // Vertical spacing between card rows
+    margin-bottom: 2rem;
+
+    thead {
+      background: $primary-teal;
+      color: $white;
+
+      th {
+        padding: 1.5rem 2rem;
+        text-align: center;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.95rem;
+        letter-spacing: 0.5px;
+        border: none;
+        background-color: $primary-teal;
+        border-right: 3px solid rgba($white, 0.35);
+        
+        // Rounded top corners for header
+        &:first-child {
+          border-top-left-radius: 12px;
+        }
+        
+        &:last-child {
+          border-top-right-radius: 12px;
+          border-right: none;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        background-color: $white;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        border-left: 4px solid transparent;
+
+        &:hover {
+          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+          border-left-color: $primary-teal;
+          transform: translateY(-2px);
+        }
+
+        td {
+          padding: 1.5rem 2rem;
+          text-align: center;
+          color: $text-dark;
+          vertical-align: middle;
+          border: none;
+          background-color: $white;
+
+          // Rounded corners for first and last cell in row
+          &:first-child {
+            border-top-left-radius: 12px;
+            border-bottom-left-radius: 12px;
+            border-left: 4px solid #d27171;
+          }
+          
+          &:last-child {
+            border-top-right-radius: 12px;
+            border-bottom-right-radius: 12px;
+          }
+        }
+      }
+    }
+  }
+
+  // ==================================================
+  // ACTIONS
+  // ==================================================
+  .actions {
+    text-align: center;
+    margin-top: 2.5rem;
+
+    button {
+      padding: 0.875rem 2.5rem;
+      background: $primary-teal;
+      color: $white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1.05rem;
+      font-weight: 600;
+      transition: all 0.25s ease;
+      box-shadow: 0 2px 8px rgba($primary-teal, 0.25);
+
+      &:hover {
+        background: darken($primary-teal, 12%);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba($primary-teal, 0.35);
+      }
+    }
+  }
+
+  // ==================================================
+  // ALERTS
+  // ==================================================
+  .alert {
+    padding: 1rem 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 6px;
+    border-left: 4px solid;
+    
+    &.alert-danger {
+      background: lighten($primary-coral, 42%);
+      color: darken($primary-coral, 20%);
+      border-left-color: $primary-coral;
+      font-weight: 500;
+    }
+  }
+}
+
+// ==================================================
+// RESPONSIVE
+// ==================================================
+@media (max-width: 768px) {
+  .purchasers-container {
+    padding: 1.5rem;
+
+    h3 {
+      font-size: 1.65rem;
+    }
+
+    .table-bordered {
+      font-size: 0.9rem;
+
+      thead th,
+      tbody td {
+        padding: 0.875rem;
+      }
+    }
+  }
+}

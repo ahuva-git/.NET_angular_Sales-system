@@ -1,0 +1,154 @@
+// ==================================================
+// COLOR VARIABLES - Three-Color Palette Design
+// ==================================================
+$primary-teal: #42bbbb;
+$primary-coral: #bb4242;
+$white: #ffffff;
+$text-dark: #2c3e50;
+
+// ==================================================
+// COMPONENT STYLES
+// ==================================================
+:host {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(44, 62, 80, 0.6);  // Semi-transparent backdrop
+  z-index: 1000;
+  pointer-events: auto;
+}
+
+.donor-form-container {
+  max-width: 500px;
+  width: 90%;
+  padding: 2rem;
+  background-color: $white;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba($text-dark, 0.08);
+  animation: modalSlideIn 0.3s ease-out;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+// ==================================================
+// FORM STYLES
+// ==================================================
+.form-group {
+  margin-bottom: 1.5rem;
+  
+  .form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: $text-dark;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid lighten($text-dark, 60%);
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: all 0.25s ease;
+    
+    &:focus {
+      outline: none;
+      border-color: $primary-teal;
+      box-shadow: 0 0 0 3px rgba($primary-teal, 0.1);
+    }
+  }
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+button {
+  flex: 1;
+  padding: 0.875rem 1.5rem;
+  background-color: $primary-teal;
+  color: $white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 8px rgba($primary-teal, 0.25);
+  
+  &:hover {
+    background-color: darken($primary-teal, 12%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba($primary-teal, 0.35);
+  }
+  
+  &.btn-secondary {
+    background-color: $white;
+    color: $text-dark;
+    border: 2px solid lighten($text-dark, 50%);
+    box-shadow: none;
+    
+    &:hover {
+      background-color: lighten($text-dark, 70%);
+      border-color: $text-dark;
+      box-shadow: 0 2px 8px rgba($text-dark, 0.1);
+    }
+  }
+}
+
+// ==================================================
+// ALERTS & MESSAGES
+// ==================================================
+.error-message {
+  background-color: lighten($primary-coral, 42%);
+  color: darken($primary-coral, 20%);
+  border: 1px solid $primary-coral;
+  border-left: 4px solid $primary-coral;
+  padding: 1rem 1.5rem;
+  border-radius: 6px;
+  margin: 1.5rem 0;
+  font-weight: 500;
+}
+
+.text-danger {
+  color: $primary-coral;
+  font-size: 0.9rem;
+  margin-top: 0.35rem;
+  font-weight: 500;
+}
+
+// ==================================================
+// RESPONSIVE
+// ==================================================
+@media (max-width: 768px) {
+  :host {
+    padding: 1.5rem;
+  }
+  
+  .donor-form-container {
+    padding: 1.5rem;
+  }
+  
+  .form-control {
+    width: 100%;
+  }
+}

@@ -1,0 +1,518 @@
+// ==================================================
+// COLOR VARIABLES - Three-Color Palette Design
+// ==================================================
+$primary-teal: #42bbbb;       // Dominant action color
+$primary-coral: #bb4242;      // Subtle secondary accent
+$white: #ffffff;              // Main background
+$text-dark: #2c3e50;          // Main text
+
+// Derived colors
+$teal-dark: darken($primary-teal, 12%);
+$teal-hover: rgba($primary-teal, 0.08);
+$coral-light: lighten($primary-coral, 42%);
+
+// ==================================================
+// COMPONENT CONTAINER
+// ==================================================
+:host {
+  display: block;
+  padding: 3rem;
+  background-color: #f5f7fa;  // Light gray background for card contrast
+  min-height: 100vh;
+}
+
+// ==================================================
+// PAGE HEADER - Professional Layout
+// ==================================================
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.5rem;
+  gap: 2rem;
+  flex-wrap: wrap;
+  
+  h3 {
+    margin: 0;
+    color: $text-dark;
+    font-weight: 600;
+    font-size: 2rem;
+    letter-spacing: -0.5px;
+  }
+  
+  .action-buttons {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+}
+
+// ==================================================
+// ACTION BUTTONS - Modern Professional Design
+// ==================================================
+.btn-primary {
+  background-color: $primary-teal;
+  color: $white;
+  border: none;
+  padding: 0.875rem 1.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 8px rgba($primary-teal, 0.25);
+  white-space: nowrap;
+  
+  &:hover {
+    background-color: $teal-dark;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba($primary-teal, 0.35);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.btn-outline {
+  background-color: $white;
+  color: $primary-teal;
+  border: 2px solid $primary-teal;
+  padding: 0.875rem 1.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.25s ease;
+  box-shadow: 0 1px 4px rgba($text-dark, 0.1);
+  white-space: nowrap;
+  
+  &:hover {
+    background-color: $primary-teal;
+    color: $white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba($primary-teal, 0.25);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// ==================================================
+// TYPOGRAPHY
+// ==================================================
+h3 {
+  color: $text-dark;
+  font-weight: 600;
+  font-size: 2rem;
+  margin-bottom: 2.5rem;
+  letter-spacing: -0.5px;
+}
+
+h4 {
+  color: $primary-teal;
+  font-weight: 600;
+  font-size: 1.35rem;
+  margin-bottom: 1.25rem;
+}
+
+// ==================================================
+// FILTER SECTION - Clean Card Design
+// ==================================================
+.filter-section {
+  background-color: $white;
+  padding: 2rem;
+  margin-bottom: 3rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba($text-dark, 0.06);
+  border: 1px solid rgba($text-dark, 0.06);
+}
+
+.filter-inputs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-end;
+
+  input[type="text"],
+  select {
+    min-width: 180px;
+    max-width: 250px;
+    background-color: $white;
+    color: $text-dark;
+    border: 2px solid $primary-teal;
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    transition: all 0.25s ease;
+    outline: none;
+
+    &:focus {
+      border-color: $primary-teal;
+      box-shadow: 0 0 0 3px rgba($primary-teal, 0.1);
+    }
+
+    &::placeholder {
+      color: lighten($text-dark, 40%);
+    }
+  }
+
+  select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%232c3e50' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    padding-right: 2.5rem;
+    border: 2px solid $primary-teal;
+    
+    &:focus {
+      border-color: $primary-teal;
+      box-shadow: 0 0 0 3px rgba($primary-teal, 0.1);
+    }
+  }
+
+  label {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    color: $text-dark;
+    cursor: pointer;
+    font-weight: 500;
+    user-select: none;
+    padding: 0.5rem 0;
+
+    input[type="checkbox"] {
+      cursor: pointer;
+      width: 1.25rem;
+      height: 1.25rem;
+      accent-color: $primary-teal;
+    }
+
+    &:hover {
+      color: $primary-teal;
+    }
+  }
+
+  button {
+    background-color: $white;
+    border: 2px solid $primary-teal;
+    color: $primary-teal;
+    padding: 0.75rem 1.75rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.25s ease;
+    white-space: nowrap;
+
+    &:hover {
+      background-color: $primary-teal;
+      color: $white;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba($primary-teal, 0.25);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+// ==================================================
+// TABLE DESIGN - Clean & Spacious
+// ==================================================
+.table-bordered {
+  width:100%;
+   background-color: transparent;
+  border-collapse: separate;
+  border-spacing: 0 1rem;
+
+  thead {
+    background-color: $primary-teal;
+    color: $white;
+
+    tr {
+      border: none;
+    }
+
+    th {
+      padding: 1rem 1rem;
+      text-align: center;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      border: none;
+      border-right: 3px solid rgba($white, 0.35);
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      background-color: $primary-teal;
+      
+      &:first-child {
+          border-top-left-radius: 12px;
+        }
+        
+        &:last-child {
+          border-top-right-radius: 12px;
+          border-right: none;
+        }
+    }
+  }
+
+  tbody {
+    tr {
+      background-color: $white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      border-left: 4px solid transparent;
+      &:hover {
+        background-color: $teal-hover;
+      }
+
+      &:last-child {
+        border-bottom: none;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+        border-left-color: $primary-teal;
+        transform: translateY(-2px);
+      }
+
+      td {
+        padding: 1.5rem 2rem;
+        color: $text-dark;
+        vertical-align: middle;
+        text-align: center;
+        font-size: 0.95rem;
+             border: none;
+        background-color: $white;
+        
+        // Rounded corners for first and last cell in row
+        &:first-child {
+          border-top-left-radius: 12px;
+          border-bottom-left-radius: 12px;
+          border-left: 4px solid #d27171;
+
+        }
+        &:last-child {
+          border-top-right-radius: 12px;
+          border-bottom-right-radius: 12px;
+        }
+        // Actions column - horizontal layout
+        .actions-container {
+          display: flex;
+          flex-direction: row;
+          gap: 0.5rem;
+          align-items: center;
+        }
+        
+        .action-buttons-row {
+          display: flex;
+          gap: 0.5rem;
+          flex-wrap: nowrap;
+          align-items: center;
+          justify-content: center;
+        }
+
+        // Action buttons in table cells - Teal primary
+        button {
+          background-color: $primary-teal;
+          color: $white;
+          border: none;
+          padding: 0.6rem 1rem;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          font-size: 0.9rem;
+          font-weight: 600;
+          white-space: nowrap;
+
+          &:hover {
+            background-color: $teal-dark;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba($primary-teal, 0.25);
+          }
+
+          &:active {
+            transform: translateY(0);
+          }
+        }
+      }
+    }
+  }
+}
+
+// ==================================================
+// IMAGES & THUMBNAILS
+// ==================================================
+.gift-thumbnail {
+  max-width: 180px;
+  max-height: 140px;
+  border-radius: 6px;
+  object-fit: cover;
+  border: 2px solid rgba($primary-teal, 0.2);
+  box-shadow: 0 2px 6px rgba($text-dark, 0.08);
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: $primary-teal;
+    transform: scale(1.05);
+  }
+}
+
+.no-image {
+  font-size: 2rem;
+  display: block;
+  text-align: center;
+  color: $primary-teal;
+  opacity: 0.7;
+}
+
+// ==================================================
+// BADGES & LABELS
+// ==================================================
+.badge, .gift-badge {
+  display: inline-block;
+  padding: 0.4rem 0.85rem;
+  font-weight: 600;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  border-radius: 5px;
+  background-color: $primary-teal;
+  color: $white;
+  font-size: 0.875rem;
+  margin: 0.25rem;
+}
+
+.winner-label {
+  color: $primary-teal;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.5rem;
+  background-color: rgba($primary-teal, 0.1);
+  border-radius: 5px;
+  display: inline-block;
+  margin-top: 0.5rem;
+}
+
+.raffled-label {
+  color: $primary-coral;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.5rem;
+  background-color: rgba($primary-coral, 0.1);
+  border-radius: 5px;
+  display: inline-block;
+  margin-top: 0.5rem;
+}
+
+// ==================================================
+// ALERTS - Using three-color palette
+// ==================================================
+.alert {
+  padding: 1rem 1.5rem;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid;
+
+  &-danger, &-error {
+    background-color: $coral-light;
+    color: darken($primary-coral, 20%);
+    border-left-color: $primary-coral;
+  }
+
+  &-success, &-info {
+    background-color: lighten($primary-teal, 45%);
+    color: darken($primary-teal, 20%);
+    border-left-color: $primary-teal;
+  }
+
+  &-warning {
+    background-color: lighten($primary-coral, 45%);
+    color: darken($primary-coral, 15%);
+    border-left-color: $primary-coral;
+  }
+}
+
+.error-message {
+  background-color: $coral-light;
+  color: darken($primary-coral, 20%);
+  border: 1px solid $primary-coral;
+  border-left: 4px solid $primary-coral;
+  padding: 1rem 1.5rem;
+  border-radius: 6px;
+  margin: 1rem 0;
+  font-weight: 500;
+}
+
+.text-danger {
+  color: $primary-coral;
+}
+
+// ==================================================
+// RESPONSIVE DESIGN
+// ==================================================
+@media (max-width: 768px) {
+  :host {
+    padding: 1.5rem;
+  }
+  
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+    
+    .action-buttons {
+      width: 100%;
+      flex-direction: column;
+      
+      button {
+        width: 100%;
+      }
+    }
+  }
+
+  h3 {
+    font-size: 1.65rem;
+  }
+
+  .filter-section {
+    padding: 1.5rem;
+  }
+
+  .filter-inputs {
+    flex-direction: column;
+
+    input[type="text"],
+    select,
+    label,
+    button {
+      width: 100%;
+      min-width: unset;
+      max-width: none;
+    }
+  }
+
+  .table-bordered {
+    font-size: 0.875rem;
+
+    thead th,
+    tbody td {
+      padding: 0.875rem;
+    }
+
+    thead th {
+      font-size: 0.8rem;
+    }
+
+    tbody td button {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.8rem;
+    }
+  }
+
+  .gift-thumbnail {
+    max-width: 60px;
+    max-height: 60px;
+  }
+}

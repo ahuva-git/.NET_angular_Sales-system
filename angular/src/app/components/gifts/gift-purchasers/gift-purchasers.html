@@ -1,0 +1,52 @@
+<div class="purchasers-container">
+  <h3>Purchasers of the Gift: {{ giftName }}</h3>
+  
+  @if(errorMsg){
+    <div class="alert alert-danger">{{errorMsg}}</div>
+  }
+
+  @if(loading) {
+    <div class="loading">Loading data...</div>
+  }
+
+  @if(!loading && purchasers.length === 0) {
+    <div class="no-data">No purchases have been made for this gift.</div>
+  }
+
+  @if(!loading && purchasers.length > 0) {
+    <div class="summary">
+      <p><strong>Total Purchasers:</strong> {{ purchasers.length }}</p>
+      <p><strong>Total Tickets Purchased:</strong> {{ totalQuantity }}</p>
+      <p><strong>Total Income:</strong> ₪{{ totalIncome }}</p>
+    </div>
+
+    <table class="table-bordered">
+      <thead>
+        <tr>
+          <th>Purchase num.</th>
+          <th>Purchaser Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Quantity</th>
+          <th>Amount Paid</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for(purchaser of purchasers; track purchaser.id; let i = $index){
+          <tr>
+            <td>{{ i + 1 }}</td>
+            <td>{{ purchaser.userName }}</td>
+            <td>{{ purchaser.email }}</td>
+            <td>{{ purchaser.phone }}</td>
+            <td>{{ purchaser.quantity }}</td>
+            <td>{{ cardPrice * purchaser.quantity }}$</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+
+  <div class="actions">
+    <button (click)="goBack()"> Back to Gifts List</button>
+  </div>
+</div>

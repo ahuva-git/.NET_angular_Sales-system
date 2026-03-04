@@ -1,0 +1,22 @@
+# === .NET / WEBAPI ===
+[Bb]in/
+[Oo]bj/
+.vs/
+.vscode/
+*.user
+*.suo
+logs/
+*.log
+publish/
+.dockerignore
+appsettings.Development.json
+
+# === Angular ===
+node_modules/
+.angular/
+dist/
+.editorconfig
+
+# === OS Specific ===
+.DS_Store
+Thumbs.db

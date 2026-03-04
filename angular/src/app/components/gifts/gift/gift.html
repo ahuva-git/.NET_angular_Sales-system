@@ -1,0 +1,69 @@
+<div class="gift-form-container">
+    <form [formGroup]="frmGift">
+
+            <div class="form-group">
+                <div class="form-label">Gift Name</div>
+                <div>
+                    <input type="text" class="form-control" formControlName="name" />
+                    @if (frmGift.controls['name'].touched && frmGift.controls['name'].errors?.['required']) {
+                        <div class="text-danger">Required field</div>
+                    }
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-label">Select Donor</div>
+                <div>
+                    <select class="form-control" (change)="onDonorChange($event)" [value]="frmGift.controls['donorId'].value">
+                        <option value="">-- Select a Donor --</option>
+                        @for (donor of donors; track donor.id) {
+                            <option [value]="donor.id">{{ donor.name }} (ID: {{ donor.id }})</option>
+                        }
+                    </select>
+                    @if (frmGift.controls['donorId'].touched && frmGift.controls['donorId'].errors?.['required']) {
+                        <div class="text-danger">Required field</div>
+                    }
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-label">Card Price</div>
+                <div>
+                    <input type="number" class="form-control" formControlName="cardPrice" />
+                    @if (frmGift.controls['cardPrice'].touched && frmGift.controls['cardPrice'].errors?.['required']) {
+                        <div class="text-danger">Required field</div>
+                    }
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-label">Category</div>
+                <div>
+                    <input type="text" class="form-control" formControlName="category" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-label">Image URL</div>
+                <div>
+                    <input type="text" class="form-control" formControlName="imageUrl" placeholder="https://example.com/image.jpg" />
+                    @if (frmGift.controls['imageUrl'].value) {
+                        <img [src]="frmGift.controls['imageUrl'].value" alt="Preview" style="max-width: 200px; margin-top: 10px; border-radius: 8px;" />
+                    }
+                </div>
+            </div>
+
+            @if (serverError) {
+                <div class="error-message" style="display: flex; justify-content: space-between; align-items: center;">
+                    <span>⚠️ {{ serverError }}</span>
+                    <button class="btn-close" (click)="serverError = null" style="background: none; border: none; cursor: pointer; font-size: 20px; color: white;">✕</button>
+                </div>
+            }
+            
+            <div class="button-group">
+                <button type="button" (click)="saveGift()">Save</button>
+                <button type="button" class="btn-secondary" (click)="cancel()">Cancel</button>
+            </div>
+        </form>
+</div>
+

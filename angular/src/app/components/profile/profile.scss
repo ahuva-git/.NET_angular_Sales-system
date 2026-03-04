@@ -1,0 +1,185 @@
+// ==================================================
+// COLOR VARIABLES - Three-Color Palette Design
+// ==================================================
+$primary-teal: #42bbbb;
+$primary-coral: #bb4242;
+$white: #ffffff;
+$text-dark: #2c3e50;
+
+// ==================================================
+// PROFILE CONTAINER
+// ==================================================
+:host {
+  display: block;
+  background-color: #f5f7fa;  // Light gray background for card contrast
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.profile-container {
+  max-width: 700px;
+  margin: 3rem auto;
+  padding: 3rem;
+  border: 1px solid rgba($text-dark, 0.08);
+  border-radius: 12px;
+  background-color: $white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+h3 {
+  text-align: center;
+  color: $text-dark;
+  margin-bottom: 2.5rem;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.profile-display {
+  background: $white;
+  padding: 2rem;
+  border-radius: 6px;
+  border: 1px solid rgba($text-dark, 0.08);
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid rgba($text-dark, 0.08);
+  
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.info-row label {
+  font-weight: 600;
+  color: $primary-teal;
+}
+
+.info-row span {
+  color: $text-dark;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: $text-dark;
+}
+
+.form-group input {
+  padding: 0.75rem 1rem;
+  border: 2px solid lighten($text-dark, 60%);
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: all 0.25s ease;
+  width: 100%;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: $primary-teal;
+  box-shadow: 0 0 0 3px rgba($primary-teal, 0.1);
+}
+
+.password-section {
+  background-color: lighten($primary-teal, 47%);
+  padding: 1.5rem;
+  border-radius: 6px;
+  margin: 2rem 0;
+  border: 1px solid rgba($primary-teal, 0.15);
+}
+
+.password-section h4 {
+  margin-top: 0;
+  color: $primary-teal;
+  font-weight: 600;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.btn-edit,
+.btn-submit,
+.btn-cancel {
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.btn-edit {
+  background-color: $primary-teal;
+  color: $white;
+  box-shadow: 0 2px 8px rgba($primary-teal, 0.25);
+}
+
+.btn-edit:hover {
+  background-color: darken($primary-teal, 12%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba($primary-teal, 0.35);
+}
+
+.btn-submit {
+  background-color: $primary-teal;
+  color: $white;
+  box-shadow: 0 2px 8px rgba($primary-teal, 0.25);
+}
+
+.btn-submit:hover:not(:disabled) {
+  background-color: darken($primary-teal, 12%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba($primary-teal, 0.35);
+}
+
+.btn-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-cancel {
+  background-color: $white;
+  color: $text-dark;
+  border: 2px solid lighten($text-dark, 50%);
+}
+
+.btn-cancel:hover {
+  background-color: lighten($text-dark, 60%);
+  border-color: $text-dark;
+  transform: translateY(-1px);
+}
+
+.error-message {
+  background-color: lighten($primary-coral, 42%);
+  color: darken($primary-coral, 20%);
+  border: 1px solid $primary-coral;
+  border-left: 4px solid $primary-coral;
+  padding: 1rem 1.5rem;
+  border-radius: 6px;
+  margin: 1rem 0;
+  font-weight: 500;
+}
+
+.success-message {
+  background-color: lighten($primary-teal, 45%);
+  color: darken($primary-teal, 20%);
+  border: 1px solid $primary-teal;
+  border-left: 4px solid $primary-teal;
+  padding: 1rem 1.5rem;
+  border-radius: 6px;
+  margin: 1rem 0;
+  font-weight: 500;
+}
