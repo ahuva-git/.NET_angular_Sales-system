@@ -12,14 +12,6 @@ This is a fullstack application with a **C# .NET 8** backend and an **Angular** 
 
 ---
 
-## 📂 Project Structure
-
-- **`/WEBAPI`**: The Server-side (ASP.NET Core 8 Web API).
-- **`/Angular`**: The Client-side (Angular Framework).
-- **`/ProjectImages`**: Screenshots and visual documentation.
-
----
-
 ## 🚀 How to Run the Project
 
 ### 1. Prerequisites
